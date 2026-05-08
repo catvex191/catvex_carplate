@@ -7,7 +7,6 @@ local allowedGroups = {
     superadmin = true
 }
 
--- Kennzeichen ändern oder reset
 RegisterCommand("kennzeichen", function(source, args, rawCommand)
     local xPlayer = ESX.GetPlayerFromId(source)
     if not xPlayer then return end

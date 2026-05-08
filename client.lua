@@ -7,15 +7,13 @@ CreateThread(function()
         Wait(100)
     end
 end)
-
--- Kennzeichen setzen
-RegisterNetEvent('fast_carplate:setPlate', function(plateText)
+RegisterNetEvent('catvex_carplate:setPlate', function(plateText)
     local playerPed = PlayerPedId()
 
     if not IsPedInAnyVehicle(playerPed, false) then
         TriggerEvent('chat:addMessage', {
             color = {255,0,0},
-            args = {'Fast-Carplate', 'Du sitzt in keinem Fahrzeug.'}
+            args = {'CatVex-Carplate', 'Du sitzt in keinem Fahrzeug.'}
         })
         return
     end
@@ -25,14 +23,12 @@ RegisterNetEvent('fast_carplate:setPlate', function(plateText)
     if GetPedInVehicleSeat(vehicle, -1) ~= playerPed then
         TriggerEvent('chat:addMessage', {
             color = {255,0,0},
-            args = {'Fast-Carplate', 'Du musst auf dem Fahrersitz sitzen.'}
+            args = {'CatVex-Carplate', 'Du musst auf dem Fahrersitz sitzen.'}
         })
         return
     end
 
     local plate = string.upper(string.sub(plateText,1,8))
-
-    -- Original-Kennzeichen speichern, falls noch nicht gespeichert
     if not originalPlates[vehicle] then
         originalPlates[vehicle] = GetVehicleNumberPlateText(vehicle)
     end
@@ -41,18 +37,18 @@ RegisterNetEvent('fast_carplate:setPlate', function(plateText)
 
     TriggerEvent('chat:addMessage', {
         color = {0,255,0},
-        args = {'Fast-Carplate', 'Kennzeichen geändert zu: '..plate}
+        args = {'CatVex-Carplate', 'Kennzeichen geändert zu: '..plate}
     })
 end)
 
 -- Kennzeichen zurücksetzen
-RegisterNetEvent('fast_carplate:resetPlate', function()
+RegisterNetEvent('catvex_carplate:resetPlate', function()
     local playerPed = PlayerPedId()
 
     if not IsPedInAnyVehicle(playerPed, false) then
         TriggerEvent('chat:addMessage', {
             color = {255,0,0},
-            args = {'Fast-Carplate', 'Du sitzt in keinem Fahrzeug.'}
+            args = {'CatVex-Carplate', 'Du sitzt in keinem Fahrzeug.'}
         })
         return
     end
@@ -62,7 +58,7 @@ RegisterNetEvent('fast_carplate:resetPlate', function()
     if GetPedInVehicleSeat(vehicle, -1) ~= playerPed then
         TriggerEvent('chat:addMessage', {
             color = {255,0,0},
-            args = {'Fast-Carplate', 'Du musst auf dem Fahrersitz sitzen.'}
+            args = {'CatVex-Carplate', 'Du musst auf dem Fahrersitz sitzen.'}
         })
         return
     end
@@ -75,6 +71,6 @@ RegisterNetEvent('fast_carplate:resetPlate', function()
 
     TriggerEvent('chat:addMessage', {
         color = {0,255,0},
-        args = {'Fast-Carplate', 'Kennzeichen zurückgesetzt.'}
+        args = {'CatVex-Carplate', 'Kennzeichen zurückgesetzt.'}
     })
 end)
